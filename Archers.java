@@ -56,13 +56,13 @@ public class Archers implements Army {
 
     public static Archers Zing() {
         // Creating a Zing archer
-        Archers zing = new Archers("Zing", 200, 16.0, 9.0, 11.0, 14.0, "Sunchildren");
+        Archers zing = new Archers("Zing", 180, 16.0, 9.0, 11.0, 14.0, "Sunchildren");
         return zing;
     }
 
     public static Archers Saggitarius() {
         // Creating a Saggitarius archer
-        Archers saggitarius = new Archers("Saggitarius", 230, 18.0, 7.0, 12.0, 17.0, "Mystics");
+        Archers saggitarius = new Archers("Saggitarius", 200, 18.0, 7.0, 12.0, 17.0, "Mystics");
         return saggitarius;
     }
 
