@@ -2,6 +2,9 @@ package OOpProgect;
 
 //This class and its methods use to take some supporting information for the battle.
 import java.util.Queue;
+
+import OOpProgect.Army;
+
 import java.util.LinkedList;
 import java.util.Arrays;
 public  class Battle {
@@ -40,5 +43,44 @@ public  class Battle {
           return UP.getMage();
       }
   }
+  //take the character who has maximum speed value.
+  public static Queue<Army> getMaxSpeed(UserProfile UP){
+      Queue<Army> armyQue = new LinkedList<>();
+      double S1 = UP.getArcher().getSpeed();
+      double S2 = UP.getKnight().getSpeed();
+      double S3 = UP.getMage().getSpeed();
+      double S4 = UP.getHealer().getSpeed();
+      double S5 = UP.getMythical_Creature().getSpeed();
+      double[] Speed = {S1,S2,S5,S3,S4};
+      double max = 0 ;
+
+      Arrays.sort(Speed);
+
+      for(int i=4;i>=0;i--){
+          max=Speed[i];
+          if (max == S1){
+              armyQue.offer(UP.getArcher());
+              S1 = 0;
+          }
+          else if (max == S2) {
+              armyQue.offer(UP.getKnight());
+              S2=0;
+          }
+          else if (max == S5) {
+              armyQue.offer(UP.getMythical_Creature());
+              S5=0;
+          }
+          else if (max == S3 ){
+              armyQue.offer(UP.getMage());
+              S3=0;
+          }
+          else{
+              armyQue.offer(UP.getHealer());
+              S4=0;
+          }
+      }
+      return armyQue;
+  }
+
 
 }
