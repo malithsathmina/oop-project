@@ -72,6 +72,53 @@ public static void Win(UserProfile U1,UserProfile U2){
     System.out.println(U2.getName()+" "+"XP: "+U2.getXp()+" "+"Gold coins: "+U2.getGold());
 
 }
+// This function use to increase the performance of characters considering their category and fighting land.
+public static void IncreasePerformance(String land,Army army){
+
+    if (land == "Hillcrest"){  //when attack happen in Hillcrest
+        if (army.getCategory() =="Highlanders"){
+            army.setAttack((army.getAttack()+1)*1.2);
+            army.setDefence(army.getDefence()+1);
+        }
+        if((army.getCategory()=="Marshlanders") ||(army.getCategory()=="Sunchildren")){
+            army.setSpeed(army.getSpeed()-1);
+        }
+    }
+
+    if (land == "Marshland"){    //when attack happen in Marshland
+        if (army.getCategory()=="Marshlanders"){
+            army.setDefence(army.getDefence()+2);
+        }
+        if(army.getCategory()=="Sunchildren"){
+            army.setAttack(army.getAttack()-1);
+        }
+        if (army.getCategory()=="Mystics"){
+            army.setSpeed(army.getSpeed()-1);
+        }
+    }
+
+    if(land == "Desert"){   //when attack happen in Desert
+        if(army.getCategory()=="Marshlanders"){
+            army.setHealth(army.getHealth()-1);
+        }
+
+        if(army.getCategory()=="Sunchildren"){
+            army.setAttack(army.getAttack()+1);
+        }
+    }
+
+    if(land == "Arcane"){   //when attack happen in Arcane
+        if(army.getCategory()=="Mystics"){
+            army.setAttack(army.getAttack()+2);
+        }
+
+        if((army.getCategory()=="Highlanders")||(army.getCategory()=="Marshlanders")){
+            army.setSpeed(army.getSpeed()-1);
+            army.setDefence(army.getDefence()-1);
+        }
+    }
+
+}
 
 
 }
