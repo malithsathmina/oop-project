@@ -82,5 +82,38 @@ public  class Battle {
       return armyQue;
   }
 
+  //take the character who has minimum health value.
+  //this use to heal their characters.
+  public static Army getMinHealth(UserProfile UP){
+    double H1 = UP.getArcher().getDefence();
+    double H2 = UP.getKnight().getDefence();
+    double H3 = UP.getMage().getDefence();
+    double H4 = UP.getHealer().getDefence();
+    double H5 = UP.getMythical_Creature().getDefence();
+    double[] Heal = {H1,H2,H3,H4,H5};
+    double min = 25 ;
+    for(int i =0 ; i <5 ;i++ ){
+        if (min > Heal[i] && Heal[i]>0){
+            min = Heal[i];
+        }
+    }
+    //return the character to the given order.
+    if (min == H1){
+        return UP.getArcher();
+    }
+    else if (min == H2) {
+        return UP.getKnight();
+    }
+    else if (min == H3) {
+        return UP.getMage();
+    }
+    else if (min == H4 ){
+        return UP.getHealer();
+    }
+    else{
+        return UP.getMythical_Creature();
+    }
+}
+
 
 }
