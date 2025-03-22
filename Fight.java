@@ -120,5 +120,134 @@ public static void IncreasePerformance(String land,Army army){
 
 }
 
+//this one is the main battle function.
+public static void game(UserProfile U1 , UserProfile U2 ,String land){
+    //U1 - user profile 1
+    //U2 - user profile 2
+    //take the stating status of the characters of each profile.
+    CopyArmy U1archer = new CopyArmy(U1.getArcher());
+    CopyArmy U2archer = new CopyArmy(U2.getArcher());
+    CopyArmy U1knight = new CopyArmy(U1.getKnight());
+    CopyArmy U2knight = new CopyArmy(U2.getKnight());
+    CopyArmy U1mage = new CopyArmy(U1.getMage());
+    CopyArmy U2mage = new CopyArmy(U2.getMage());
+    CopyArmy U1healer = new CopyArmy(U1.getHealer());
+    CopyArmy U2healer = new CopyArmy(U2.getHealer());
+    CopyArmy U1mythicalCreature = new CopyArmy(U1.getMythical_Creature());
+    CopyArmy U2mythicalCreature = new CopyArmy(U2.getMythical_Creature());
+
+
+    //increasing performance with respect to the land.
+    Fight.IncreasePerformance(land,U1.getArcher());
+    Fight.IncreasePerformance(land,U1.getKnight());
+    Fight.IncreasePerformance(land,U1.getMage());
+    Fight.IncreasePerformance(land,U1.getHealer());
+    Fight.IncreasePerformance(land,U1.getMythical_Creature());
+    Fight.IncreasePerformance(land,U2.getArcher());
+    Fight.IncreasePerformance(land,U2.getKnight());
+    Fight.IncreasePerformance(land,U2.getMage());
+    Fight.IncreasePerformance(land,U2.getHealer());
+    Fight.IncreasePerformance(land,U2.getMythical_Creature());
+
+    int i =1;
+    Queue<Army> army1 = Battle.getMaxSpeed(U1);
+    Queue<Army> army2 = Battle.getMaxSpeed(U2);
+    ArrayList<String> dethArmy1=new ArrayList<>();
+    ArrayList<String> dethArmy2=new ArrayList<>();
+    while (i<=20 && !((U1.getArcher().getHealth()==0 && U1.getKnight().getHealth()==0 && U1.getMage().getHealth()==0 && U1.getHealer().getHealth()==0 && U1.getMythical_Creature().getHealth()==0)||(U2.getArcher().getHealth()==0 && U2.getKnight().getHealth()==0 && U2.getMage().getHealth()==0 && U2.getHealer().getHealth()==0 && U2.getMythical_Creature().getHealth()==0))){
+        System.out.println("-> Turn: "+i);
+        if(i%2==1){
+            //attacking time of U1 player
+            System.out.println("Attacker is "+U1.getName());
+            Army fighter;
+            for (int num=0;num<5;num++) {
+                for (String name : dethArmy1) {
+                    if (name.equals(army1.peek().getName())) {
+                        army1.remove();
+                        break;
+                    }
+                }
+            }
+
+            fighter = army1.peek();
+            System.out.print(U1.getName()+ "'s ");
+
+            if(fighter.getClass()!=Healers.class){
+                Army defender = Battle.getMinDefence(U2);
+                boolean val=Fight.Attack(fighter,defender, U1.getLand());
+                if(val){
+                    dethArmy2.add(defender.getName());
+                }
+            }
+            else{
+                Army receiver = Battle.getMinHealth(U1);
+                Fight.HealerAttack(fighter,receiver, U1.getLand());
+            }
+            army1.offer(army1.poll());
+
+        }
+
+        else{  //attacking time of player 2.
+            System.out.println("Attacker is "+U2.getName());
+            Army fighter;
+            for (int num=0;num<5;num++) {
+                for (String name : dethArmy2) {
+                    if (name.equals(army2.peek().getName())) {
+                        army2.remove();
+                        break;
+                    }
+                }
+            }
+
+            fighter = army2.peek();
+
+            System.out.print(U2.getName()+ "'s ");
+            if(fighter.getClass()!=Healers.class){
+                Army defender = Battle.getMinDefence(U1);
+                boolean val=Fight.Attack(fighter,defender, U1.getLand());
+                if(val){
+                    dethArmy1.add(defender.getName());
+                }
+            }
+            else{
+                Army receiver = Battle.getMinHealth(U1);
+                Fight.HealerAttack(fighter,receiver, U1.getLand());
+            }
+            army2.offer(army2.poll());
+        }
+        i++;
+    }
+    //wining status
+    Fight.Win(U1,U2);
+
+    // set the starting status of the characters of each player profile.
+    CopyArmy.SetArmy(U1.getArcher(),U1archer);
+    CopyArmy.SetArmy(U2.getArcher(),U2archer);
+    CopyArmy.SetArmy(U1.getKnight(),U1knight);
+    CopyArmy.SetArmy(U2.getKnight(),U2knight);
+    CopyArmy.SetArmy(U1.getMage(),U1mage);
+    CopyArmy.SetArmy(U2.getMage(),U2mage);
+    CopyArmy.SetArmy(U1.getHealer(),U1healer);
+    CopyArmy.SetArmy(U2.getHealer(),U2healer);
+    CopyArmy.SetArmy(U1.getMythical_Creature(),U1mythicalCreature);
+    CopyArmy.SetArmy(U2.getMythical_Creature(), U2mythicalCreature);
+
+    // remove unnecessary objects.
+
+    U1archer = null;
+    U1knight = null;
+    U1mage   = null;
+    U1healer = null;
+    U1mythicalCreature = null;
+    U2archer = null;
+    U2knight = null;
+    U2mage   = null;
+    U2healer = null;
+    U2mythicalCreature = null;
+    System.gc();
+
+}
+
+
 
 }
