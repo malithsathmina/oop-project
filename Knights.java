@@ -1,5 +1,7 @@
 package OOpProgect;
 
+import OOpProgect.Army;
+
 public class Knights implements Army {
     // Attributes of army characters.
     private String Name;        // Type of the knight
@@ -24,3 +26,20 @@ public class Knights implements Army {
         this.Speed = Speed;
         this.Category = Category;
     }
+       // Method to print details of different types of knights.
+    public static void print() {
+        // Printing details of different knight types
+        Army.printDetails(Squire());
+        Army.printDetails(Cavalier());
+        Army.printDetails(Templar());
+        Army.printDetails(Zoro());
+        Army.printDetails(Swiftblade());
+    }
+
+    // Creating different types of knights.
+    public static Knights Squire() {
+        // Creating a Squire knight
+        Knights Sq = new Knights("Squire", 85, 8.0, 9.0, 7.0, 8.0, "Marshlanders");
+        return Sq;
+    }
+}
