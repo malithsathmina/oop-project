@@ -66,6 +66,71 @@ public class Healers implements Army {
         Healers lightbringer = new Healers("Lightbringer", 260, 17.0, 15.0, 19.0, 12.0, "Sunchildren");
         return lightbringer;
     }
+    // Getters to access attributes of healers.
+    public String getCategory() {
+        return Category;
+    }
+
+    public int getPrice() {
+        return Price;
+    }
+
+    public double getAttack() {
+        return Attack;
+    }
+
+    public double getDefence() {
+        return Defence;
+    }
+
+    public double getHealth() {
+        return Health;
+    }
+
+    public double getSpeed() {
+        return Speed;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public boolean getArmer() {
+        return armer;
+    }
+
+    public boolean getArtefacts() {
+        return artefacts;
+    }
+
+    // Setters to set the attributes of healers.
+    public void setPrice(int price) {
+        this.Price = price;
+    }
+
+    public void setAttack(double attack) {
+        this.Attack = attack;
+    }
+
+    public void setDefence(double defence) {
+        this.Defence = defence;
+    }
+
+    public void setHealth(double health) {
+        this.Health = health;
+    }
+
+    public void setSpeed(double speed) {
+        this.Speed = speed;
+    }
+
+    public void setArmer() {
+        armer = true;
+    }
+
+    public void setArtefacts() {
+        artefacts = true;
+    }
 
     
 }
