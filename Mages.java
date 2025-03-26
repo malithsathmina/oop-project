@@ -60,4 +60,44 @@ public class Mages implements Army {
         return Cnj;
     }
 
+    public static Mages Eldritch() {
+        // Creating an Eldritch mage
+        Mages Edl = new Mages("Eldritch", 270, 19.0, 17.0, 18.0, 14.0, "Mystics");
+        return Edl;
+    }
+
+    // Getters to access attributes of mages.
+    public String getCategory() {
+        return Category;
+    }
+
+    public int getPrice() {
+        return Price;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public double getAttack() {
+        return Attack;
+    }
+
+    public double getDefence() {
+        return Defence;
+    }
+
+    public double getHealth() {
+        return Health;
+    }
+
+    public double getSpeed() {
+        return Speed;
+    }
+
+    public boolean getArmer() {
+        return armer;
+    }
+
+
 }
