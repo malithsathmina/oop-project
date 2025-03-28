@@ -365,6 +365,72 @@ public static void setArray(ArrayList<UserProfile> Users){users=Users;}
         }
     }
 
+    //print thr army which hasn't artifact or armour
+    //if artifact or armour can't be add return false else return true
+    public boolean printArmy(boolean val){
+        boolean value=false;
+        if(val){
+            boolean value1=true;
+            boolean value2=true;
+            System.out.println("<<< You can add armors >>>");
+            int count=0;
+            //check whether solder has armer
+            for (Army temp:army){
+                if(temp!=null) {
+                    if (!(temp.getArmer())) {
+                        value = true;
+                        value1=false;
+                        System.out.println(temp.getName() + " -> To add armor press number: " + count);
+                        
+                    }
+                }
+                count++;
+            }
+            if(value1){
+                System.out.println("<<< You haven't army or Characters are already Equipped >>>");
+            }
+            System.out.println("");
+            count=5;
+            System.out.println("<<< You can add artefacts >>>");
+            //check whether solder has artifact
+            for (Army temp:army){
+                if (temp!=null) {
+                    if (!(temp.getArtefacts())) {
+                        value = true;
+                        value2=false;
+                        System.out.println(temp.getName() + " -> To add artifact press number: " + count);
+                       
+                    }
+                }
+                count++;
+            }
+            if (value2){
+                System.out.println("<<< You haven't army or Characters are already Equipped >>>");
+            }
+
+        }else {
+            System.out.println(">>> You have enough money\n-> To continue press number: 15");
+        }
+        System.out.println("");
+        return value;
+    }
+    // print all the exiting army
+    public void printArmyDel(){
+        for(int i=0;i<5;i++) {
+            if (army[i] != null) {
+                System.out.println(army[i].getName()+" press to delete: "+i);
+            }
+        }
+
+    }
+    //delete the solder
+    public void delete(int num){
+        gold= (int) (gold+army[num].getPrice()*0.9);
+        System.out.println("-> Delete the "+army[num].getName());
+        army[num]=null;
+    }
+
+
 
 
 }
