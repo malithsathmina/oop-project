@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import OOpProgect.Archers;
 import OOpProgect.Armour;
 import OOpProgect.Army;
 import OOpProgect.Artefacts;
@@ -75,6 +76,54 @@ public class UserProfile implements Serializable {
     }
     public void setXp(int XP){
         this.xp = XP;
+    }
+public static void setArray(ArrayList<UserProfile> Users){users=Users;}
+    //delete the user
+    public static void deleteUser(UserProfile temp){users.remove(temp);}
+    //add acher
+    public void addAcher(int num){
+            if (num == 0) {
+                Archers A1 = Archers.Shooter();
+                if(A1.getPrice()<=gold) {
+                gold = gold - A1.getPrice();
+                army[0] = A1;
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else if (num == 1) {
+                Archers A2 = Archers.Ranger();
+                if(A2.getPrice()<=gold) {
+                gold = gold - A2.getPrice();
+                army[0] = A2;
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else if (num == 2) {
+                Archers A3 = Archers.Sunfire();
+                if(A3.getPrice()<=gold) {
+                gold = gold - A3.getPrice();
+                army[0] = A3;
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else if (num == 3) {
+                Archers A4 = Archers.Zing();
+                if(A4.getPrice()<=gold) {
+                gold = gold - A4.getPrice();
+                army[0] = A4;
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else { //creating Saggitarius
+                Archers A5 = Archers.Saggitarius();
+                if(A5.getPrice()<=gold) {
+                gold = gold - A5.getPrice();
+                army[0] = A5;
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            }
+
     }
 
 }
