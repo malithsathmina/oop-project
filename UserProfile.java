@@ -306,6 +306,64 @@ public static void setArray(ArrayList<UserProfile> Users){users=Users;}
             }
 
         }
+        //check whether is there a user in the list of users bu checking username and name
+    //if there is user return the user
+    public static UserProfile findUser(String name,String pas){
+        for(UserProfile temp:users){
+            if(temp.name.equals(name) && temp.userName.equals(pas)){
+                return temp;
+            }
+        }
+        return null;
+    }
+    //print the existing army and nonexisting army
+    //if use can add solder return ture else return false
+    public boolean printArmy(){
+        ArrayList<Army> available=new ArrayList<>();
+        ArrayList<Integer> unavailable=new ArrayList<>();
+        int count=0;
+        for(Army temp:army){
+            if (temp==null){
+                unavailable.add(count);
+            }else {
+                available.add(temp);
+            }
+
+        count++;
+        }
+        System.out.println("-------------------");
+        System.out.println(">>>> YOUR ARMY <<<<");
+        System.out.println("-------------------");
+        System.out.println("");
+        if(available.size()==0){
+            System.out.println("!!! There hasn't any character !!!");
+        }
+        for (int i=0;i<available.size();i++){
+            System.out.println(available.get(i).getName());
+        }
+        System.out.println("");
+        if (available.size()==5){
+            System.out.println("!!! You can't add character !!!");
+            return false;
+        }else {
+            System.out.println("--- You can buy only below character category ---");
+            for (int i = 0; i < unavailable.size(); i++) {
+                if (unavailable.get(i) == 0) {
+                    System.out.println("-> Archers:                0");
+                } else if (unavailable.get(i) == 1) {
+                    System.out.println("-> Knights:                1");
+                } else if (unavailable.get(i) == 2) {
+                    System.out.println("-> Mages:                  2");
+                } else if (unavailable.get(i) == 3) {
+                    System.out.println("-> Healers:                3");
+                } else {
+                    System.out.println("-> Mythical Creatures:     4");
+                }
+
+            }
+            return true;
+        }
+    }
 
 
 
