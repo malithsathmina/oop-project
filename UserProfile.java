@@ -125,5 +125,53 @@ public static void setArray(ArrayList<UserProfile> Users){users=Users;}
             }
 
     }
+    //add Knight
+    public void addKnight(int num){
+
+        if (num == 0) {
+            Knights k1 = Knights.Squire();
+            if(k1.getPrice()<=gold) {
+            army[1] = k1;
+            gold = gold - k1.getPrice();
+            }else{
+                System.out.println("!!! You haven't enough money !!!");
+            }
+        } else if (num == 1) {
+            Knights k2 = Knights.Cavalier();
+            if(k2.getPrice()<=gold) {
+            army[1] = k2;
+            gold = gold - k2.getPrice();
+            }else{
+                System.out.println("!!! You haven't enough money !!!");
+            }
+        } else if (num == 2) {
+            Knights k3 = Knights.Templar();
+            if(k3.getPrice()<=gold) {
+            army[1] = k3;
+            gold = gold - k3.getPrice();
+            }else{
+                System.out.println("!!! You haven't enough money !!!");
+            }
+        } else if (num == 3) {
+            Knights k4 = Knights.Zoro();
+            if(k4.getPrice()<=gold) {
+            army[1] = k4;
+            gold = gold - k4.getPrice();
+            }else{
+                System.out.println("!!! You haven't enough money !!!");
+            }
+        } else if (num == 4) {
+            Knights k5 = Knights.Swiftblade();
+            if(k5.getPrice()<=gold) {
+            army[1] = k5;
+            gold = gold - k5.getPrice();
+            }else{
+                System.out.println("!!! You haven't enough money !!!");
+            }
+        } else {
+            System.out.println("!!! Wrong Input !!!");
+        }
+}
+
 
 }
