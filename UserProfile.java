@@ -8,6 +8,7 @@ import OOpProgect.Archers;
 import OOpProgect.Armour;
 import OOpProgect.Army;
 import OOpProgect.Artefacts;
+import OOpProgect.Mages;
 
 public class UserProfile implements Serializable {
     private static ArrayList<UserProfile> users=new ArrayList();
@@ -171,7 +172,141 @@ public static void setArray(ArrayList<UserProfile> Users){users=Users;}
         } else {
             System.out.println("!!! Wrong Input !!!");
         }
-}
+    }
+    //add Mages
+    public void addMages(int num) {
+            if (num == 0) {
+                Mages M = Mages.Warlock();
+                if(M.getPrice()<=gold) {
+                    army[2] = M;
+                    gold = gold - M.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else if (num == 1) {
+                Mages M = Mages.Illusionist();
+                if(M.getPrice()<=gold) {
+                army[2] = M;
+                gold = gold - M.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else if (num == 2) {
+                Mages M = Mages.Enchanter();
+                if(M.getPrice()<=gold) {
+                army[2] = M;
+                gold = gold - M.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else if (num == 3) {
+                Mages M = Mages.Conjurer();
+                if(M.getPrice()<=gold) {
+                army[2] = M;
+                gold = gold - M.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else { //creating Eldritch
+                Mages M = Mages.Eldritch();
+                if(M.getPrice()<=gold) {
+                army[2] = M;
+                gold = gold - M.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            }
+    }
+    //add Healers
+    public void addHealers(int num) {
+            if (num == 0) {
+                Healers h = Healers.Soother();
+                if(h.getPrice()<=gold) {
+                army[3] = h;
+                gold = gold - h.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else if (num == 1) {
+                Healers h = Healers.Medic();
+                if(h.getPrice()<=gold) {
+                army[3] = h;
+                gold = gold - h.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else if (num == 2) {
+                Healers h = Healers.Alchemist();
+                if(h.getPrice()<=gold) {
+                army[3] = h;
+                gold = gold - h.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else if (num == 3) {
+                Healers h = Healers.Saint();
+                if(h.getPrice()<=gold) {
+                army[3] = h;
+                gold = gold - h.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else { //creating Lightbringer
+                Healers h = Healers.Lightbringer();
+                if(h.getPrice()<=gold) {
+                army[3] = h;
+                gold = gold - h.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            }
+    }
+    //add Mythical Creature
+    public void addMythicalCreature(int num) {
+            if (num == 0) {
+                MythicalCreatures M1 = MythicalCreatures.Dragon();
+                if(M1.getPrice()<=gold) {
+                army[4] = M1;
+                gold = gold - M1.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else if (num == 1) {
+                MythicalCreatures M2 = MythicalCreatures.Basilisk();
+                if(M2.getPrice()<=gold) {
+                army[4] = M2;
+                gold = gold - M2.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else if (num == 2) {
+                MythicalCreatures M3 = MythicalCreatures.Hydra();
+                if(M3.getPrice()<=gold) {
+                army[4] = M3;
+                gold = gold - M3.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else if (num == 3) {
+                MythicalCreatures M4 = MythicalCreatures.Phoenix();
+                if(M4.getPrice()<=gold) {
+                army[4] = M4;
+                gold = gold - M4.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            } else { //creating Pegasus
+                MythicalCreatures M5 = MythicalCreatures.Pegasus();
+                if(M5.getPrice()<=gold) {
+                army[4] = M5;
+                gold = gold - M5.getPrice();
+                }else{
+                    System.out.println("!!! You haven't enough money !!!");
+                }
+            }
+
+        }
+
 
 
 }
