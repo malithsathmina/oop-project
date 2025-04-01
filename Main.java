@@ -346,6 +346,29 @@ public class Main implements Serializable {
 
         }
     }
+    //to loge to profile
+    public static UserProfile logging(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(">>> Enter The Name :");
+        String name=scanner.next();
+        System.out.println(">>> Enter The UserName :");
+        String pas=scanner.next();
+        //check whether is there a player in array list
+        if(UserProfile.findUser(name,pas)!=null){
+            return UserProfile.findUser(name,pas);
+        }else{
+            System.out.println("!!! Invalid Username Or Password !!!");     //There isn't user like that
+            System.out.println("");
+            System.out.println("Do you want to try again (please press y to YES , press n to NO )");
+            String yesOrNo = scanner.next();
+            if(yesOrNo.equals("n")){
+                return null;
+            }else {
+                return logging();
+            }
+        }
+    }
+
     
 }
 
