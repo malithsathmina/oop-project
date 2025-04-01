@@ -369,6 +369,109 @@ public class Main implements Serializable {
         }
     }
 
-    
+    public static void main(String[] args) {
+        //deserialize list of users
+        ArrayList<UserProfile> myArray=Main.deserializeData();
+        if(myArray==null){
+            UserProfile.defoult();
+        }else {
+            UserProfile.setArray(myArray);
+        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("---------------------------------------");
+        System.out.println(">>>>>>> WELCOME TO MYSTIC MAYHEM <<<<<<");
+        System.out.println("---------------------------------------");
+        while(true){
+            UserProfile currentUser;
+            //print the main function of game
+            System.out.println("");
+            System.out.println("-> To log your profile press number : 1 ");
+            System.out.println("-> To create a profile press number : 2 ");
+            System.out.println("-> To delete a profile press number : 3 ");
+            System.out.println("-> To exit the profile press number : 4 ");
+            String num=scanner.next();
+            //loge the profile
+            if (num.equals("1")){
+               currentUser=logging();
+               if(currentUser!=null) {
+                   afterLogging(currentUser);
+               }
+            }
+            //create new profile
+            else if (num.equals("2")) {
+                System.out.println(">>> Enter Your Name : ");
+                String name=scanner.next();
+                String pas;
+                //check whether userName is already existing or not
+                while(true) {
+                    ArrayList<UserProfile> test=UserProfile.getArray();
+                    System.out.println(">>> Enter The Username : ");
+                    pas = scanner.next();
+                    boolean value=false;
+                    for (UserProfile i:test){
+                        value=pas.equals(i.getUserName());
+                        if(value){
+                            break;
+                        }
+                    }
+                    if(value){
+                        System.out.println("!!! UserName is already existing !!!\n!!! Please Try Again !!!");
+                    }else {
+                        break;
+                    }
+
+                }
+                String land;
+                while (true) {
+                    try {
+                        System.out.println(">>> Please select the land and press number:\n");    //Enter the land
+                        System.out.println("-> Hillcrest:        1");
+                        System.out.println("-> Marshland:        2");
+                        System.out.println("-> Desert:           3");
+                        System.out.println("-> Arcane:           4");
+                        int landNum = scanner.nextInt();
+                        if (landNum==1){
+                            land="Hillcrest";
+                            break;
+                        } else if (landNum==2) {
+                            land="Marshland";
+                            break;
+                        } else if (landNum==3) {
+                            land="Desert";
+                            break;
+                        }else if (landNum==4) {
+                            land="Arcane";
+                            break;
+                        }else {
+                            System.out.println("!!! Invalid input !!!");
+                        }
+                    }catch (InputMismatchException e) {
+                        System.err.println("!!! Invalid integer format !!! ");
+                        scanner.next();
+                    }
+
+                }
+
+                currentUser=new UserProfile(name,pas,land);
+                if(currentUser!=null) {
+                    afterLogging(currentUser);
+                }
+            }
+            //delete the profile
+            else if (num.equals("3")) {
+                UserProfile temp=logging();
+                UserProfile.deleteUser(temp);
+
+
+            } else if(num.equals("4")){
+                break;
+            }
+            else {
+                System.out.println("!!! Invalid input !!!");
+            }
+        }
+        //serialize the list of user
+        Main.serializeData(UserProfile.getArray());
+    }
 }
 
